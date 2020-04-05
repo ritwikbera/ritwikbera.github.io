@@ -15,7 +15,11 @@ Thoughts on deep learning training.
 
     Mixed precision training speeds up training by using 16 bit weights while maintaining a 32 bit copy of weights for high precision inference.
     During training, weights are rounded off to 16 bit representations and gradients scaled up to make them significant in 16 bit precision. During the update step on the 32 bit master copy of the weights, the gradients are scaled down to restore their original value.
+<<<<<<< HEAD
     Using 16 bit weights for training leads to a lower memory requirement for storing activations.
+=======
+    Using 16 bit weights for training leads to a lower memory requirement to cache activations.
+>>>>>>> 1b6893e73393ecac385a267e8ae001c23d512752
 
 * __Gradient Checkpointing__
 
