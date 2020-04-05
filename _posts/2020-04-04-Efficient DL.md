@@ -54,7 +54,7 @@ Some of the tricks frequently used include,
 
     In architectures like _MobileNet V2_, this trick is also used to keep the number of channels fixed throughout to keep the tensor (flowing through the net) size manageable.
 
-* _Reversible Networks__, an Uber AI creation reduces memory requirement by not caching intermediate activations. The layers are interspersed with reversible layers that recompute those activations when the gradient flow through them during the backward pass.
+* _Reversible Networks_, an Uber AI creation reduces memory requirement by not caching intermediate activations. The layers are interspersed with reversible layers that recompute those activations when the gradient flow through them during the backward pass.
 
 * Of course, autoregressive models are growing out of favour with the rise of parallelizes sequence models like _Temporal Convolutions_ and _Self/Relative Attention_. The latter even generates some great music ! [Check it out](https://magenta.tensorflow.org/music-transformer)
 
@@ -70,7 +70,8 @@ When a model architecture is already given, the _Deep Compression_ paper by Han 
 
     Moreover quantization into integers also speeds up things due to the fact that integer arithmetic is usually faster than floating point arithmetic on computers.
 
-    ![Quant](assets/img/quant.png)
+    ![Quant](/assets/img/quant.png)
+    
     *An example of binary quantization. The binary operation in this case is a convolution with kernel [1 1 -1]. Source: https://medium.com/@joel_34050/quantization-in-deep-learning-478417eab72b*
 
 * In order to store the model with even lower memory, _Huffman Coding_ is used to reduce the bit representations of more common weights (bigger cluster) to fewer bits.
