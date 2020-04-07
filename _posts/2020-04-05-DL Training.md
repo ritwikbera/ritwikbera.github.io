@@ -11,6 +11,8 @@ Thoughts on deep learning training.
 
 ## Improving Single Device Training Performance
 
+### Techniques for memory considerations
+
 * __Mixed Precision Training__
 
     Mixed precision training speeds up training by using 16 bit weights while maintaining a 32 bit copy of weights for high precision inference.
@@ -23,6 +25,8 @@ Thoughts on deep learning training.
 
     Gradient checkpointing can be a trade-off that reduces memory consumption but increases compute requirement.
 
+### Techniques for training time considerations
+
 * __Second-order Optimization__
 
     First-order optimization methods take time to converge, as first derivates often do not capture the loss surface very well. Second-order optimization methods are more accurate but they require costly matrix inversion operations. Techniques like _Kronecker Factored Approximate Curvature K-FAC_ enable inexpensive second-order optimization as the creatively factorize out large matrices into smaller block matrices. For more details visit [here](https://towardsdatascience.com/introducing-k-fac-and-its-application-for-large-scale-deep-learning-4e3f9b443414)
@@ -31,13 +35,21 @@ Thoughts on deep learning training.
 
     Batch norm reduces the effects of second-order interactions between weights in different layers, thus stabilising gradient values and speeding up convergence.
 
+    _Note_ : A common misconception is that the use of BatchNorm makes usage of L2 regulariation redundant as the activations are renormalized anyway. It is important to note that while BatchNorm normalizes activations the weight are free to grow in magnitude. Hence, L2 is still important to keep the weights bounded within a fixed radius hypersphere.
+
+* __Prioritized Sample Batching__:
+    
+    Reinforcement learning techniques like DDPG use a concept called _Prioritized Experience Replay_ to select samples with highest prediction error to train the policy network. The same fundamental concept could be used in general supervised learning to select those samples (to be a part of the next batch) that have the highest loss, and can provide the most useful gradient update.
+
+    A way to do that would be a _Metropolitan Hastings_ style method (discussed [here](https://medium.com/secure-and-private-ai-math-blogging-competition/importance-sampling-for-deep-learning-efdc0b754c6e)) wherein the next samples for a batch are chosen based on a Markov chain starting from the current batch's samples. The probability distribution over the next set of samples in the Markov chain could be defined as a ratio of the losses. Once the samples are chosen their losses could be weighted via importance sampling weights so that they do not overcorrect the network.
+
 ## Improving Multi Device Training Performance
 
 * __Data vs Model Parallelism__
 
     _Data Parallelism_ is preferred when we have lots of data that can't fit on a single device and exchanging weight gradients is relatively easier (especially in case convolutions where kernels have relatively few parameters). 
 
-    On the other hand, _Model Parallelism_ is preferred when there are too many parameters to be fit on a single device and exchange activation gradients is easier.
+    On the other hand, _Model Parallelism_ is preferred when there are too many parameters to be fit on a single device and exchanging activation gradients is easier.
 
 * __Asynchronous Optimization__
 
