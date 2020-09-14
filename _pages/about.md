@@ -22,5 +22,5 @@ I occasionally like to spend my time reading about what's new in applied researc
 
 Outside working on projects and writing code, I also [present](https://drive.google.com/file/d/1hLUs3bCV30j86bbRNIeZ9V_Usk7b9pTc/view?usp=sharing) and [write](https://ritwikbera.github.io/year-archive/) on topics within the machine learning subfield.
 
-My CV can be found [here](/assets/CV.pdf).
+My CV can be found [here](/assets/Deedy_CV.pdf).
 
