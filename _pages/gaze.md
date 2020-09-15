@@ -20,9 +20,13 @@ The proposed method is applied to a visual navigation task, in which an unmanned
 
 *Figure: Training robots to do tasks in the physical space via a dataset of human demonstrations follows the same prinicples as any other supervised ML problem with a custom evaluation component. Interventions during rollouts act as a error-guided feedback-driven data engine.*
 
-![tobii](/assets/gaze/tobii.jpg)
+<p align="center">
+  <img width="460" height="300" src="/assets/gaze/tobii.jpg">
+</p>
+<!-- ![tobii](/assets/gaze/tobii.jpg) -->
 
-*Figure: A Tobii 4C eye tracker identical to the one used in this project.*
+<div align="center">Figure: A Tobii 4C eye tracker identical to the one used in this project. </div>
+
 
 ![system](/assets/gaze/sys_diagram.png)
 
@@ -49,7 +53,7 @@ performed via independent model heads.*
 ---
 - **_Continuous Improvement_**: As a big believer in the importance of data quality as the primary driver in improving model performance, a big focus in this project was to come up with a evidence-guided data augmentation process. This is more so because collecting data for robotics related tasks (expert demonstrations) is expensive in terms of time and effort.
 
-![tool](/assets/gaze/tool.png)
+![tool](/assets/gaze/mining_tool.gif)
 
 *Figure: A custom tool built using matplotlib to help mine max error datapoints from the rollout trajectories. This helps in revealing gaps in the model's understanding and guides the next round of data collection for continual improvement.* 
 
