@@ -43,11 +43,20 @@ eye gaze data.*
 
 ## Approach
 ---
+
+### Designing the Model
+
 ![model](/assets/gaze/model.png)
 
 *Figure: The proposed model architecture illustrating how quadrotor onboard sensor data and cameras frames are processed, how features
 are combined in a shared representation backbone, and how multiple outputs, i.e. the gaze and action prediction networks, are
 performed via independent model heads.*
+
+### Ensuring Performance on Hardware
+
+![hardware_algo](/assets/gaze/col_hardware.png)
+
+*Figure: System diagram showcasing resource-efficient implementation on hardware*
 
 ## Highlights and Learnings
 ---
